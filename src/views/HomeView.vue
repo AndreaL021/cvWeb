@@ -25,7 +25,7 @@
       }"
     >
       <div style="height: 300px;" class="d-flex justify-content-center align-items-center">
-        <a :href="pdf" download class="btn btn-lg" style="background-color: white; font-weight: bold; font-style: italic;">Resume</a>
+        <a :href="pdf" target="_blank" class="btn btn-lg" style="background-color: white; font-weight: bold; font-style: italic;">Resume</a>
           <div class="bg"></div>
           <div class="bg bg2"></div>
           <div class="bg bg3"></div>

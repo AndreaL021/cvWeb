@@ -41,7 +41,7 @@
             >
           </li>
         </ul>
-        <a :href="pdf" download class="btn btn-primary">Resume</a>
+        <a :href="pdf" target="_blank" class="btn btn-primary">Resume</a>
       </div>
     </div>
   </nav>

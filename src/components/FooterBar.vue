@@ -55,10 +55,8 @@
       </div>
       <div class="col-12 col-lg-5" v-else>
         <div class="text-center" style="font-size: 20px">
-          Email sent succesfully <fa-i
-            icon="fa-solid fa-check"
-            style="color: greenyellow"
-          ></fa-i>
+          Email sent succesfully
+          <fa-i icon="fa-solid fa-check" style="color: greenyellow"></fa-i>
         </div>
       </div>
     </div>
@@ -200,7 +198,13 @@ export default {
       }
     },
   },
-  mounted() {},
+  mounted() {
+    document.addEventListener("keydown", function (event) {
+      if (event.code === "Space") {
+        event.preventDefault();
+      }
+    });
+  },
 };
 </script>
 <style scoped>

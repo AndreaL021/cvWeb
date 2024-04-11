@@ -40,8 +40,9 @@ export default {
   created() {
     this.resetSnake();
   },
-  beforeDestroy() {
+  beforeUnmount() {
     window.removeEventListener("keydown", this.onKeyPress);
+    console.log('destroy');
   },
   watch: {
     isPlaying(value) {

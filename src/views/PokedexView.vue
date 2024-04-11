@@ -263,7 +263,7 @@ export default {
       //   console.log(this.pokemon);
     },
   },
-  async mounted() {
+  async created() {
     await this.getPokemon();
   },
 };
