@@ -4,32 +4,35 @@
     <h1 style="color: white" class="pt-5">WEB DEVELOPER</h1>
     <div
       class="d-flex justify-content-center SVGContainer"
-      style="padding: 10px"
+      style="padding: 10px; min-height: 80vh"
     >
       <mySvg class="mySVG" />
     </div>
-    <div style="color: white" v-motion-slide-visible-once-right>TEST</div>
-    <div style="color: white" v-motion-fade-visible>fade</div>
     <div
-      style="color: white; background-color: goldenrod; overflow: hidden;"
+      style="color: white; background-color: goldenrod; overflow: hidden"
       v-motion
       :initial="{
-        y: 100,
+        y: 270,
+        opacity: 0,
       }"
       :visible-once="{
         y: 0,
+        opacity: 1,
         transition: {
-          duration: 400,
+          duration: 1300,
           ease: 'easeInOut',
         },
       }"
     >
-      <div style="height: 300px;" class="d-flex justify-content-center align-items-center">
-        <a :href="pdf" target="_blank" class="btn btn-lg" style="background-color: white; font-weight: bold; font-style: italic;">Resume</a>
-          <div class="bg"></div>
-          <div class="bg bg2"></div>
-          <div class="bg bg3"></div>
-          <div class="bg4"></div>
+      <div
+        style="height: 300px"
+        class="d-flex justify-content-center align-items-center"
+      >
+        <a :href="pdf" target="_blank" class="btn btn-lg resume-btn">Resume</a>
+        <div class="bg"></div>
+        <div class="bg bg2"></div>
+        <div class="bg bg3"></div>
+        <div class="bg4"></div>
       </div>
     </div>
     <!-- <div
@@ -78,61 +81,83 @@ export default {
     mySvg,
     GearMotion,
   },
-  methods: {
-  },
+  methods: {},
   watch: {},
   mounted() {},
 };
 </script>
 <style scoped>
+.resume-btn {
+  background-color: white;
+  font-weight: bold;
+  font-style: italic;
+  color: black;
+}
+.resume-btn:hover {
+  animation-duration: 0.7s;
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 19px 12px #ffd700;
+  box-shadow: 0px 0px 19px 12px #ffd700;
+  font-weight: bold;
+  font-style: italic;
+  color: gold;
+}
 .bg {
-  animation:slide 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, rgb(128, 150, 0) 50%, rgb(0, 0, 0) 50%);
+  animation: slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(
+    -60deg,
+    rgb(128, 150, 0) 50%,
+    rgb(0, 0, 0) 50%
+  );
   bottom: 0;
-  left:-50%;
-  opacity:.5;
-  position:fixed;
-  right:-50%;
+  left: -50%;
+  opacity: 0.5;
+  position: fixed;
+  right: -50%;
   top: 0;
-  z-index:-1;
+  z-index: -1;
 }
 .bg2 {
-  animation-direction:alternate-reverse;
-  animation-duration:4s;
+  animation-direction: alternate-reverse;
+  animation-duration: 4s;
 }
 .bg3 {
-  animation-duration:5s;
+  animation-duration: 5s;
 }
 .bg3.fast-animation {
-  animation-duration:3s;
+  animation-duration: 3s;
 }
 .bg4 {
-  animation:slide2 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, rgb(0, 0, 0) 50%, rgb(128, 150, 0) 50%);
+  animation: slide2 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(
+    -60deg,
+    rgb(0, 0, 0) 50%,
+    rgb(128, 150, 0) 50%
+  );
   bottom: 0;
-  animation-direction:alternate-reverse;
-  animation-duration:8s;
-  left:-50%;
-  opacity:.5;
-  position:fixed;
-  right:-50%;
+  animation-direction: alternate-reverse;
+  animation-duration: 8s;
+  left: -50%;
+  opacity: 0.5;
+  position: fixed;
+  right: -50%;
   top: 0;
-  z-index:-1;
+  z-index: -1;
 }
 @keyframes slide {
   0% {
-    transform:translateX(-25%);
+    transform: translateX(-25%);
   }
   100% {
-    transform:translateX(25%);
+    transform: translateX(25%);
   }
 }
 @keyframes slide2 {
   0% {
-    transform:translateX(50%);
+    transform: translateX(50%);
   }
   100% {
-    transform:translateX(0%);
+    transform: translateX(0%);
   }
 }
 .home {

@@ -10,10 +10,16 @@
         aria-controls="navbarSupportedContent"
         aria-expanded="false"
         aria-label="Toggle navigation"
+        @click="closeEvent"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div
+        ref="navbarSupportedContent"
+        class="collapse navbar-collapse"
+        id="navbarSupportedContent"
+        @click="closeNavbar"
+      >
         <ul class="navbar-nav me-auto mb-2 mb-sm-0">
           <li class="nav-item">
             <router-link class="nav-link active" to="/"
@@ -41,25 +47,40 @@
             >
           </li>
         </ul>
-        <a :href="pdf" target="_blank" class="btn btn-primary">Resume</a>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
-import pdf from "@/assets/CV.pdf";
-
 export default {
   name: "NavBar",
   data() {
     return {
-      pdf,
       home_beat: false,
     };
   },
-  mounted() {
+  methods: {
+    closeEvent() {
+      setTimeout(() => {
+        let t = this.$refs.navbarSupportedContent;
+        console.log(t);
+        if (t.className.includes("show")) {
+          document.body.addEventListener("click", function () {
+            t.classList.remove("show");
+            document.body.removeEventListener("click", t);
+          });
+        }
+      }, 500);
+    },
+    closeNavbar() {
+      let t = this.$refs.navbarSupportedContent;
+      if (t.className.includes("show")) {
+        t.classList.remove("show");
+      }
+    },
   },
+  mounted() {},
 };
 </script>
 <style scoped>

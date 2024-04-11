@@ -5,7 +5,7 @@
   >
     <div class="text-center" style="font-size: 25px">Contacts</div>
     <div class="row d-flex justify-content-center align-items-center">
-      <div class="col-12 col-lg-5" v-if="form">
+      <div class="col-8 col-lg-5" v-if="form">
         <input
           v-model="form_data.access_key"
           autocomplete="access_key"
@@ -51,9 +51,13 @@
             <span style="margin-right: auto; font-size: 24px"> Submit </span>
           </button>
         </div>
-        <div class="h-captcha form-control p-0 mt-1" data-captcha="true"></div>
+        <div
+          style="background-color: transparent; border: none"
+          class="h-captcha form-control p-0 mt-1 d-flex justify-content-center align-items-center"
+          data-captcha="true"
+        ></div>
       </div>
-      <div class="col-12 col-lg-5" v-else>
+      <div class="col-8 col-lg-5" v-else>
         <div class="text-center" style="font-size: 20px">
           Email sent succesfully
           <fa-i icon="fa-solid fa-check" style="color: greenyellow"></fa-i>
@@ -136,6 +140,9 @@ export default {
     };
   },
   methods: {
+    test(e) {
+      console.log(e);
+    },
     checkForm() {
       if (!document.querySelector("textarea[name=h-captcha-response]")) {
         alert("Error, reload required");
@@ -184,12 +191,6 @@ export default {
     },
   },
   watch: {
-    // form_data(newValue) {
-    //   if (newValue) {
-    //     this.checkForm();
-    //   } else {
-    //   }
-    // },
     overlay(newValue) {
       if (newValue) {
         document.body.classList.add("body-no-scroll");
