@@ -22,30 +22,22 @@
       >
         <ul class="navbar-nav me-auto mb-2 mb-sm-0">
           <li class="nav-item">
-            <router-link class="nav-link active" to="/"
-              ><fa-i
-                icon="fa-house"
-                :beat="home_beat"
-                @mouseover="home_beat = true"
-                @mouseleave="home_beat = false"
-              ></fa-i>
+            <router-link :class="['nav-link', $router.currentRoute.value.name=='home'?'active, disabled':'']" to="/">
+              Home
             </router-link>
           </li>
           <li class="nav-item">
+            <router-link :class="['nav-link', $router.currentRoute.value.name=='projects'?'active, disabled':'']" to="/projects"
+              >Projects</router-link
+            >
+          </li>
+
+          <!-- <li class="nav-item">
             <router-link class="nav-link" to="/snake">Snake</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/pokedex">Pokedex</router-link>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link disabled"
-              href="#"
-              tabindex="-1"
-              aria-disabled="true"
-              >Disabled</a
-            >
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
@@ -57,14 +49,12 @@ export default {
   name: "NavBar",
   data() {
     return {
-      home_beat: false,
     };
   },
   methods: {
     closeEvent() {
       setTimeout(() => {
         let t = this.$refs.navbarSupportedContent;
-        console.log(t);
         if (t.className.includes("show")) {
           document.body.addEventListener("click", function () {
             t.classList.remove("show");
@@ -80,7 +70,9 @@ export default {
       }
     },
   },
-  mounted() {},
+  mounted() {
+    console.log(this.$router.currentRoute);
+  },
 };
 </script>
 <style scoped>

@@ -140,9 +140,6 @@ export default {
     };
   },
   methods: {
-    test(e) {
-      console.log(e);
-    },
     checkForm() {
       if (!document.querySelector("textarea[name=h-captcha-response]")) {
         alert("Error, reload required");
@@ -210,6 +207,6 @@ export default {
 </script>
 <style scoped>
 a:hover {
-  background-color: transparent;
+  filter: drop-shadow(7px 7px 0 black);
 }
 </style>

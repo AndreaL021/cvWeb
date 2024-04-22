@@ -18,7 +18,7 @@ export default [
         }
     },
     {
-        direction: "top",
+        direction: "up",
         keyCode: 38,
         type: 'arrow',
         move: {
@@ -27,7 +27,7 @@ export default [
         }
     },
     {
-        direction: "bottom",
+        direction: "down",
         keyCode: 40,
         type: 'arrow',
         move: {
@@ -54,7 +54,7 @@ export default [
         }
     },
     {
-        direction: "top",
+        direction: "up",
         keyCode: 87,
         type: 'wasd',
         move: {
@@ -63,7 +63,7 @@ export default [
         }
     },
     {
-        direction: "bottom",
+        direction: "down",
         keyCode: 83,
         type: 'wasd',
         move: {

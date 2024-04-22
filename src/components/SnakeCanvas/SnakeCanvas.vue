@@ -1,6 +1,6 @@
 <template>
   <canvas
-    style="border: solid 1px black"
+    style="border: solid 1px black; touch-action: none"
     ref="canvas"
     :width="board_size_px"
     :height="board_size_px"
@@ -8,13 +8,14 @@
 </template>
 <script>
 import constants from "./constants";
+import { useSwipe } from "@vueuse/core";
 export default {
   name: "SnakeCanvas",
   data() {
     return {
-      changeDirection: true,
+      changeDirection: false,
       snake: [],
-      interval: null
+      interval: null,
     };
   },
   props: {
@@ -33,6 +34,12 @@ export default {
     },
   },
   mounted() {
+    const that = this
+    const { direction } = useSwipe(this.$refs.canvas, {
+      onSwipeEnd() {
+        that.onSwipe(direction.value)
+      },
+    });
     this.board_context = this.$refs.canvas.getContext("2d");
     window.addEventListener("keydown", this.onKeyPress);
     this.drawCommand();
@@ -42,7 +49,6 @@ export default {
   },
   beforeUnmount() {
     window.removeEventListener("keydown", this.onKeyPress);
-    console.log('destroy');
   },
   watch: {
     isPlaying(value) {
@@ -56,35 +62,74 @@ export default {
     },
   },
   methods: {
+    onSwipe(direction) {
+      if (this.changeDirection == false) {
+        return;
+      }
+      const newDirection = constants.find((c) => c.direction == direction);
+      if (!newDirection) {
+        return;
+      }
+      switch (this.direction.direction) {
+        case "left":
+          if (newDirection.direction == "right") {
+            return;
+          } else {
+            this.direction = newDirection;
+            this.changeDirection = false;
+          }
+          break;
+        case "right":
+          if (newDirection.direction == "left") {
+            return;
+          } else {
+            this.direction = newDirection;
+            this.changeDirection = false;
+          }
+          break;
+        case "down":
+          if (newDirection.direction == "up") {
+            return;
+          } else {
+            this.direction = newDirection;
+            this.changeDirection = false;
+          }
+          break;
+        case "up":
+          if (newDirection.direction == "down") {
+            return;
+          } else {
+            this.direction = newDirection;
+            this.changeDirection = false;
+          }
+          break;
+      }
+    },
     drawCommand() {
       this.board_context.beginPath();
       this.board_context.fillStyle = "black";
       this.board_context.font = "bold 18px Arial";
       this.board_context.fillText(
         "Press spacebar/enter to restart",
-        10,
+        20,
         this.getMiddleCell() * this.cell_size
       );
       this.board_context.fillText(
-        "Movement: ↑ ← ↓ → | wasd",
-        10,
+        "Movement: ↑ ← ↓ → | wasd | swipe",
+        20,
         this.getMiddleCell() * this.cell_size + 20
       );
       this.board_context.closePath();
     },
     resetSnake() {
       this.direction = constants[0];
-      console.log(this.snake);
       this.snake = [];
-      console.log(this.snake);
       this.snake.push({
         x: this.getMiddleCell(),
         y: this.getMiddleCell(),
       });
-      console.log(this.snake);
     },
     getMiddleCell() {
-      console.log(Math.round(this.board_size / 2));
       return Math.round(this.board_size / 2);
     },
     move() {
@@ -123,7 +168,7 @@ export default {
 
       this.changeDirection = true;
 
-      this.interval=setTimeout(this.move, this.getMoveDelay());
+      this.interval = setTimeout(this.move, this.getMoveDelay());
     },
 
     clear() {
@@ -151,12 +196,11 @@ export default {
       return x < 0 || y < 0 || x >= this.board_size || y >= this.board_size;
     },
     onKeyPress(event) {
-      console.log(event);
+      // Start/Stop
       if (
         constants.filter((c) => c.keyCode == event.keyCode).length > 0 &&
         constants.find((c) => c.keyCode == event.keyCode).type == "start"
       ) {
-        console.log("start");
         return this.stop();
       }
       if (this.changeDirection == false) {

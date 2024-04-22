@@ -4,7 +4,7 @@
   <header>
     <nav-bar />
   </header>
-  <main>
+  <main style="min-height: 80vh;">
     <RouterView />
   </main>
   <footer>
@@ -24,6 +24,9 @@ export default {
   data() {
     return {};
   },
+  created(){
+    alert('Page under development');
+  }
 };
 </script>
 <style>

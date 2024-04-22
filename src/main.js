@@ -14,6 +14,7 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { MotionPlugin } from "@vueuse/motion";
 import { GesturePlugin } from "@vueuse/gesture";
+// import { useFullscreen } from '@vueuse/core'
 import Autocomplete from "@/components/utils/SelectComponent.vue"
 import Dialog from "@/components/utils/Dialog.vue"
 

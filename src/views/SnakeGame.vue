@@ -2,7 +2,7 @@
   <div class="container pt-2" style="text-align: center">
     <h1>SNAKE</h1>
     <div class="container">
-      <div class="row d-flex justify-content-center">
+      <div v-if="desktop" class="row d-flex justify-content-center">
         <div class="col-8 col-lg-4">
           <div>Cell size (px):</div>
           <input type="number" min="10" v-model.number="cell_size" />
@@ -31,9 +31,9 @@
           :resetScores="resetScores"
         />
       </div>
-      <div class="my-2" style="display: inline-block;">
+      <div class="my-2" style="display: inline-block">
         <span style="width: 50%">Scores: {{ scores }}</span>
-        <span style="width: 50%; margin-left: 100px;">
+        <span style="width: 50%; margin-left: 100px">
           <button @click="start" class="btn btn-success" style="width: 70px">
             {{ isPlaying ? "Stop" : "Play" }}
           </button>
@@ -52,6 +52,7 @@ export default {
   },
   data() {
     return {
+      desktop:true,
       cell_size: 20,
       board_size: 17,
       speed: 10,
@@ -74,5 +75,10 @@ export default {
       this.scores += scores;
     },
   },
+  mounted(){
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      this.desktop=false
+    }
+  }
 };
 </script>
