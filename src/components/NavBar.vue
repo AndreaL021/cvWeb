@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-      <span class="navbar-brand">Andrea Lopasso</span>
+      <span style="font-size: 30px;" class="navbar-brand">Andrea Lopasso</span>
       <button
         class="navbar-toggler"
         type="button"
@@ -76,6 +76,12 @@ export default {
 };
 </script>
 <style scoped>
+nav{
+  font-family: "Jersey 10", sans-serif;
+}
+li{
+  font-size: 24px;
+}
 a:hover {
   background-color: transparent;
 }

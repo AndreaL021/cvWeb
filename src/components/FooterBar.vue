@@ -80,7 +80,7 @@
         </a>
       </div>
       <div class="col-1">
-        <a href="https://www.instagram.com/andrea02156/" target="_blank"
+        <a href="https://www.instagram.com/andrea_lopasso_web_developer/" target="_blank"
           ><fa-i
             icon="fa-brands fa-instagram"
             :beat="ig_beat"

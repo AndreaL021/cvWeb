@@ -4,10 +4,6 @@
     <div class="container">
       <div v-if="desktop" class="row d-flex justify-content-center">
         <div class="col-8 col-lg-4">
-          <div>Cell size (px):</div>
-          <input type="number" min="10" v-model.number="cell_size" />
-        </div>
-        <div class="col-8 col-lg-4">
           <div>Board size(cells):</div>
           <input type="number" min="15" v-model.number="board_size" />
         </div>

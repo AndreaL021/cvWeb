@@ -4,7 +4,7 @@
   <header>
     <nav-bar />
   </header>
-  <main style="min-height: 80vh;">
+  <main style="min-height: 80vh">
     <RouterView />
   </main>
   <footer>
@@ -24,13 +24,11 @@ export default {
   data() {
     return {};
   },
-  created(){
-    alert('Page under development');
-  }
+  created() {},
 };
 </script>
 <style>
 body {
-  padding-top: 50px;
+  padding-top: 70px;
 }
 </style>

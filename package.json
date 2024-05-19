@@ -1,4 +1,9 @@
 {
+  "author": {
+    "name": "Andrea Lopasso",
+    "email": "lopassoandrea1@gmail.com",
+    "url": "https://andrealopasso.it"
+  },
   "name": "cvweb",
   "version": "0.0.0",
   "private": true,

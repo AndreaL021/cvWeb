@@ -130,16 +130,16 @@ export default {
     }
     function fillText() {
       let fontSize;
-      let top=100
+      let top = 100;
       if (w <= 576) {
         fontSize = "40px";
-        top=150
+        top = 150;
       } else if (w <= 768) {
         fontSize = "50px";
-        top=100
+        top = 100;
       } else {
         fontSize = "60px";
-        top=100
+        top = 100;
       }
       ctx.font = fontSize + ' "Jersey 10", sans-serif'; // Imposta il font e la dimensione del testo
       ctx.fillStyle = "white"; // Imposta il colore del testo
@@ -154,13 +154,22 @@ export default {
       fillText();
 
       canvas.addEventListener("mousemove", MouseMove, false);
+
       for (var i = 0; i < arc; i++) {
         var li = parts[i];
+      if (
+        !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        )
+      ) {
         var distanceFactor = DistanceBetween(mouse, parts[i]);
         var distanceFactor = Math.max(
           Math.min(15 - distanceFactor / 10, 10),
           1
         );
+      }else{
+        var distanceFactor = 3;
+      }
         ctx.beginPath();
         ctx.arc(li.x, li.y, li.size * distanceFactor, 0, Math.PI * 2, false);
         ctx.fillStyle = li.c;
@@ -192,9 +201,6 @@ export default {
     function MouseMove(e) {
       mouse.x = e.layerX;
       mouse.y = e.layerY;
-
-      //context.fillRect(e.layerX, e.layerY, 5, 5);
-      //Draw( e.layerX, e.layerY );
     }
     function DistanceBetween(p1, p2) {
       var dx = p2.x - p1.x;
