@@ -2,6 +2,7 @@
 <template>
   <div class="text-center home" style="overflow: hidden">
     <h1 style="color: white">Projects</h1>
+    <!-- LaravelApp -->
     <div
       class="row d-flex justify-content-center align-items-center text-center mt-5"
       style="padding: 10px; background-color: grey"
@@ -66,6 +67,7 @@
         </p>
       </div>
     </div>
+    <!-- ElectronVueApp -->
     <div
       class="row d-flex justify-content-center align-items-center text-center mt-5"
       style="padding: 10px; background-color: grey"
@@ -118,6 +120,7 @@
         </p>
       </div>
     </div>
+    <!-- Pokedex -->
     <div
       class="row d-flex justify-content-center align-items-center text-center mt-5"
       style="padding: 10px; background-color: grey"
@@ -170,12 +173,15 @@
         </p>
       </div>
     </div>
+    <!-- Snake -->
     <div
       class="row d-flex justify-content-center align-items-center text-center mt-5"
       style="padding: 10px; background-color: grey"
     >
-      <div class="col-12 d-flex justify-content-center align-items-center text-center">
-        <router-link  style="width: fit-content"  class="nav-link" to="/snake"
+      <div
+        class="col-12 d-flex justify-content-center align-items-center text-center"
+      >
+        <router-link style="width: fit-content" class="nav-link" to="/snake"
           ><span class="link myFont">Snake</span></router-link
         >
         <fa-i
@@ -227,11 +233,14 @@
         </p>
       </div>
     </div>
+    <!-- Flappy bird -->
     <div
       class="row d-flex justify-content-center align-items-center text-center mt-5"
       style="padding: 10px; background-color: grey"
     >
-      <div class="col-12 d-flex justify-content-center align-items-center text-center">
+      <div
+        class="col-12 d-flex justify-content-center align-items-center text-center"
+      >
         <a
           class="nav-link"
           style="width: fit-content"
@@ -284,17 +293,43 @@
             style="color: yellow; font-size: 30px; margin-left: 5px"
           ></fa-i>
         </p>
-        <!-- <fa-i icon="fa-brands fa-html5" style="color: orangered; font-size: 30px;"></fa-i>
-          <fa-i icon="fa-brands fa-css3-alt" style="color: blue; font-size: 30px;"></fa-i>
-          <fa-i icon="fa-brands fa-js" style="color: yellow; font-size: 30px;"></fa-i>
-          <fa-i icon="fa-brands fa-vuejs" style="color: green; font-size: 30px;"></fa-i>
-          <fa-i icon="fa-brands fa-laravel" style="color: orangered; font-size: 30px;"></fa-i>
-          <fa-i icon="fa-solid fa-atom" style="color: blue; font-size: 30px;"></fa-i> -->
       </div>
+    </div>
+    <!-- VueFramework -->
+    <div
+      class="row d-flex justify-content-center align-items-center text-center mt-5"
+      style="padding: 10px; background-color: grey"
+    >
+      <div class="col-12">
+        <!-- <a
+          style="text-decoration: none"
+          href="https://github.com/AndreaL021/Laravelecommerce"
+          target="blank"
+        > -->
+        <span class="link myFont">Vue Framework (work in progress)</span>
+        <!-- </a> -->
+        <!-- <fa-i
+          icon="fa-solid fa-chevron-down"
+          v-if="!framework.expand"
+          @click="framework.expand = true"
+          style="color: white; font-size: 30px; margin-left: 10px"
+        ></fa-i>
+        <fa-i
+          v-if="framework.expand"
+          icon="fa-solid fa-chevron-up"
+          @click="framework.expand = false"
+          style="color: white; font-size: 30px; margin-left: 10px"
+        ></fa-i> -->
+      </div>
+      <div
+        v-if="framework.expand"
+        class="col-12 col-md-6 d-flex justify-content-center align-items-center mt-2"
+      ></div>
+      <div class="col-12 mt-3" v-if="framework.expand"></div>
     </div>
   </div>
 </template>
-  <script>
+<script>
 import electron_vue_video from "@/assets/ElectronVueApp/ElectronVueVideo.mp4";
 import flappy_bird_image from "@/assets/flappy_bird.png";
 import pokedex_image from "@/assets/pokedex.png";
@@ -331,6 +366,10 @@ export default {
           laravel_badge,
           laravel_revisor,
         ],
+        expand: false,
+      },
+      framework: {
+        src: null,
         expand: false,
       },
       laravel_image_index: 0,
