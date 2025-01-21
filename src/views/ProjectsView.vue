@@ -9,23 +9,22 @@
     >
       <div class="col-12">
         <a
-          class="nav-link"
-          style="width: fit-content"
-          href="https://andreal021.github.io/VueFramework/"
-          target="_blank"
+          style="text-decoration: none"
+          href="https://github.com/AndreaL021/VueFramework"
+          target="blank"
         >
         <span class="link myFont">Vue Framework (work in progress)</span>
         </a>
         <!-- <fa-i
           icon="fa-solid fa-chevron-down"
-          v-if="!framework.expand"
-          @click="framework.expand = true"
+          v-if="!laravel_ecommerce.expand"
+          @click="laravel_ecommerce.expand = true"
           style="color: white; font-size: 30px; margin-left: 10px"
         ></fa-i>
         <fa-i
-          v-if="framework.expand"
+          v-if="laravel_ecommerce.expand"
           icon="fa-solid fa-chevron-up"
-          @click="framework.expand = false"
+          @click="laravel_ecommerce.expand = false"
           style="color: white; font-size: 30px; margin-left: 10px"
         ></fa-i> -->
       </div>
