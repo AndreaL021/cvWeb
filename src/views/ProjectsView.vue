@@ -2,6 +2,39 @@
 <template>
   <div class="text-center home" style="overflow: hidden">
     <h1 style="color: white">Projects</h1>
+    <!-- VueFramework -->
+    <div
+      class="row d-flex justify-content-center align-items-center text-center mt-5"
+      style="padding: 10px; background-color: grey"
+    >
+      <div class="col-12">
+        <a
+          class="nav-link"
+          style="width: fit-content"
+          href="https://andreal021.github.io/VueFramework/"
+          target="_blank"
+        >
+        <span class="link myFont">Vue Framework (work in progress)</span>
+        </a>
+        <!-- <fa-i
+          icon="fa-solid fa-chevron-down"
+          v-if="!framework.expand"
+          @click="framework.expand = true"
+          style="color: white; font-size: 30px; margin-left: 10px"
+        ></fa-i>
+        <fa-i
+          v-if="framework.expand"
+          icon="fa-solid fa-chevron-up"
+          @click="framework.expand = false"
+          style="color: white; font-size: 30px; margin-left: 10px"
+        ></fa-i> -->
+      </div>
+      <div
+        v-if="framework.expand"
+        class="col-12 col-md-6 d-flex justify-content-center align-items-center mt-2"
+      ></div>
+      <div class="col-12 mt-3" v-if="framework.expand"></div>
+    </div>
     <!-- LaravelApp -->
     <div
       class="row d-flex justify-content-center align-items-center text-center mt-5"
@@ -294,38 +327,6 @@
           ></fa-i>
         </p>
       </div>
-    </div>
-    <!-- VueFramework -->
-    <div
-      class="row d-flex justify-content-center align-items-center text-center mt-5"
-      style="padding: 10px; background-color: grey"
-    >
-      <div class="col-12">
-        <!-- <a
-          style="text-decoration: none"
-          href="https://github.com/AndreaL021/Laravelecommerce"
-          target="blank"
-        > -->
-        <span class="link myFont">Vue Framework (work in progress)</span>
-        <!-- </a> -->
-        <!-- <fa-i
-          icon="fa-solid fa-chevron-down"
-          v-if="!framework.expand"
-          @click="framework.expand = true"
-          style="color: white; font-size: 30px; margin-left: 10px"
-        ></fa-i>
-        <fa-i
-          v-if="framework.expand"
-          icon="fa-solid fa-chevron-up"
-          @click="framework.expand = false"
-          style="color: white; font-size: 30px; margin-left: 10px"
-        ></fa-i> -->
-      </div>
-      <div
-        v-if="framework.expand"
-        class="col-12 col-md-6 d-flex justify-content-center align-items-center mt-2"
-      ></div>
-      <div class="col-12 mt-3" v-if="framework.expand"></div>
     </div>
   </div>
 </template>
