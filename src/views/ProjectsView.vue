@@ -13,7 +13,18 @@
           href="https://github.com/AndreaL021/VueFramework"
           target="blank"
         >
-        <span class="link myFont">Vue Framework (work in progress)</span>
+          <span class="link myFont">Vue Framework (work in progress)</span>
+        </a>
+        <a
+          style="text-decoration: none"
+          href="https://andreal021.github.io/VueFramework/"
+          target="blank"
+        >
+          <fa-i
+            icon="fa-solid fa-up-right-from-square"
+            style="color: white; font-size: 30px; margin-left: 10px"
+          >
+          </fa-i>
         </a>
         <!-- <fa-i
           icon="fa-solid fa-chevron-down"
