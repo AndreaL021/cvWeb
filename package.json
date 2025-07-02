@@ -27,6 +27,7 @@
     "@vueuse/gesture": "^2.0.0",
     "@vueuse/motion": "^2.1.0",
     "bootstrap": "^5.3.3",
+    "cvweb": "file:",
     "pinia": "^2.1.7",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
