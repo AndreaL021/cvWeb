@@ -7,64 +7,74 @@
       class="row d-flex justify-content-center align-items-center text-center mt-5"
       style="padding: 10px; background-color: grey"
     >
-      <div class="col-12">
+      <div
+        class="col-12 d-flex justify-content-center align-items-center text-center"
+      >
         <a
-          style="text-decoration: none"
+          class="nav-link"
+          style="width: fit-content"
           href="https://laravel12-ecommerce-main-olsbl8.laravel.cloud/"
-          target="blank"
+          target="_blank"
         >
-          <span class="link myFont">Laravel 12 + Alpine Ecommerce (work in progress)</span>
+          <fa-i
+            icon="fa-solid fa-arrow-up-right-from-square"
+            class="link"
+            style="font-size: 30px; margin-right: 30px"
+          ></fa-i>
         </a>
+        <a
+          class="nav-link"
+          style="width: fit-content"
+          href="https://github.com/AndreaL021/laravel12-ecommerce"
+          target="_blank"
+        >
+          <fa-i
+            icon="fa-brands fa-github"
+            class="link"
+            style="font-size: 30px; margin-right: 30px"
+          ></fa-i>
+        </a>
+        <span
+          class="link myFont"
+          @click="laravel_ecommerce_new.expand = !laravel_ecommerce_new.expand"
+          >Laravel 12 + Alpine Ecommerce</span
+        >
         <fa-i
           icon="fa-solid fa-chevron-down"
-          v-if="!laravel_ecommerce.expand"
-          @click="laravel_ecommerce.expand = true"
-          style="color: white; font-size: 30px; margin-left: 10px"
+          class="link"
+          v-if="!laravel_ecommerce_new.expand"
+          @click="laravel_ecommerce_new.expand = true"
+          style="font-size: 30px; margin-left: 10px"
         ></fa-i>
         <fa-i
-          v-if="laravel_ecommerce.expand"
+          v-if="laravel_ecommerce_new.expand"
           icon="fa-solid fa-chevron-up"
-          @click="laravel_ecommerce.expand = false"
-          style="color: white; font-size: 30px; margin-left: 10px"
+          class="link"
+          @click="laravel_ecommerce_new.expand = false"
+          style="font-size: 30px; margin-left: 10px"
         ></fa-i>
       </div>
       <div
-        v-if="laravel_ecommerce.expand"
+        v-if="laravel_ecommerce_new.expand"
         class="col-12 col-md-6 d-flex justify-content-center align-items-center mt-2"
       >
         <fa-i
           icon="fa-solid fa-chevron-left"
-          @click="changeImage(-1)"
-          style="color: white; font-size: 30px; margin-right: 5px"
+          class="link"
+          @click="changeLaravelNewImage(-1)"
+          style="font-size: 30px; margin-right: 5px"
         ></fa-i>
-        <a href="https://github.com/AndreaL021/Laravel12-ecommerce" target="blank">
           <img
             style="cursor: pointer"
             width="100%"
-            :src="laravel_ecommerce.images[laravel_image_index]"
+            :src="laravel_ecommerce_new.images[laravel_new_image_index]"
           />
-        </a>
         <fa-i
+          class="link"
           icon="fa-solid fa-chevron-right"
-          @click="changeImage(+1)"
-          style="color: white; font-size: 30px; margin-left: 5px"
+          @click="changeLaravelNewImage(+1)"
+          style="font-size: 30px; margin-left: 5px"
         ></fa-i>
-      </div>
-      <div class="col-12 mt-3" v-if="laravel_ecommerce.expand">
-        <p
-          style="color: white"
-          class="d-flex justify-content-center align-items-center"
-        >
-          Laravel app | &nbsp
-          <fa-i
-            icon="fa-brands fa-laravel"
-            style="color: orangered; font-size: 30px"
-          ></fa-i>
-          <fa-i
-            icon="fa-brands fa-bootstrap"
-            style="color: purple; font-size: 30px"
-          ></fa-i>
-        </p>
       </div>
     </div>
     <!-- VueFramework -->
@@ -72,14 +82,36 @@
       class="row d-flex justify-content-center align-items-center text-center mt-5"
       style="padding: 10px; background-color: grey"
     >
-      <div class="col-12">
-        <!-- <a
-          style="text-decoration: none"
-          href="https://github.com/AndreaL021/Laravelecommerce"
-          target="blank"
-        > -->
-        <span class="link myFont">Vue Framework (work in progress)</span>
-        <!-- </a> -->
+      <div
+        class="col-12 col-md-6 d-flex justify-content-center align-items-center mt-2"
+      >
+        <a
+          class="nav-link"
+          style="width: fit-content"
+          href="https://andreal021.github.io/VueFramework/"
+          target="_blank"
+        >
+          <fa-i
+            icon="fa-solid fa-arrow-up-right-from-square"
+            class="link"
+            style="font-size: 30px; margin-right: 30px"
+          ></fa-i>
+        </a>
+        <a
+          class="nav-link"
+          style="width: fit-content"
+          href="https://github.com/AndreaL021/VueFramework"
+          target="_blank"
+        >
+          <fa-i
+            icon="fa-brands fa-github"
+            class="link"
+            style="font-size: 30px; margin-right: 30px"
+          ></fa-i>
+        </a>
+        <span class="link myFont" @click="framework.expand = !framework.expand"
+          >Vue Framework (work in progress)</span
+        >
         <!-- <fa-i
           icon="fa-solid fa-chevron-down"
           v-if="!framework.expand"
@@ -93,36 +125,50 @@
           style="color: white; font-size: 30px; margin-left: 10px"
         ></fa-i> -->
       </div>
-      <div
+      <!-- <div
         v-if="framework.expand"
         class="col-12 col-md-6 d-flex justify-content-center align-items-center mt-2"
       ></div>
-      <div class="col-12 mt-3" v-if="framework.expand"></div>
+      <div class="col-12 mt-3" v-if="framework.expand"></div> -->
     </div>
     <!-- LaravelApp -->
     <div
       class="row d-flex justify-content-center align-items-center text-center mt-5"
       style="padding: 10px; background-color: grey"
     >
-      <div class="col-12">
+      <div
+        class="col-12 d-flex justify-content-center align-items-center text-center"
+      >
         <a
-          style="text-decoration: none"
+          class="nav-link"
+          style="width: fit-content"
           href="https://github.com/AndreaL021/Laravelecommerce"
-          target="blank"
+          target="_blank"
         >
-          <span class="link myFont">Laravel App</span>
+          <fa-i
+            icon="fa-brands fa-github"
+            class="link"
+            style="font-size: 30px; margin-right: 30px"
+          ></fa-i>
         </a>
+        <span
+          class="link myFont"
+          @click="laravel_ecommerce.expand = !laravel_ecommerce.expand"
+          >Laravel 8 + Bootstrap Ecommerce</span
+        >
         <fa-i
           icon="fa-solid fa-chevron-down"
+          class="link"
           v-if="!laravel_ecommerce.expand"
           @click="laravel_ecommerce.expand = true"
-          style="color: white; font-size: 30px; margin-left: 10px"
+          style="font-size: 30px; margin-left: 10px"
         ></fa-i>
         <fa-i
           v-if="laravel_ecommerce.expand"
           icon="fa-solid fa-chevron-up"
+          class="link"
           @click="laravel_ecommerce.expand = false"
-          style="color: white; font-size: 30px; margin-left: 10px"
+          style="font-size: 30px; margin-left: 10px"
         ></fa-i>
       </div>
       <div
@@ -131,20 +177,20 @@
       >
         <fa-i
           icon="fa-solid fa-chevron-left"
-          @click="changeImage(-1)"
-          style="color: white; font-size: 30px; margin-right: 5px"
+          class="link"
+          @click="changeLaravelImage(-1)"
+          style="font-size: 30px; margin-right: 5px"
         ></fa-i>
-        <a href="https://github.com/AndreaL021/Laravelecommerce" target="blank">
           <img
             style="cursor: pointer"
             width="100%"
             :src="laravel_ecommerce.images[laravel_image_index]"
           />
-        </a>
         <fa-i
           icon="fa-solid fa-chevron-right"
-          @click="changeImage(+1)"
-          style="color: white; font-size: 30px; margin-left: 5px"
+          class="link"
+          @click="changeLaravelImage(+1)"
+          style="font-size: 30px; margin-left: 5px"
         ></fa-i>
       </div>
       <div class="col-12 mt-3" v-if="laravel_ecommerce.expand">
@@ -169,25 +215,51 @@
       class="row d-flex justify-content-center align-items-center text-center mt-5"
       style="padding: 10px; background-color: grey"
     >
-      <div class="col-12">
+      <div
+        class="col-12 d-flex justify-content-center align-items-center text-center"
+      >
         <a
-          style="text-decoration: none"
-          href="https://github.com/AndreaL021/test_electron_vue"
-          target="blank"
+          class="nav-link"
+          style="width: fit-content"
+          href="../assets/ElectronVueApp/electron_vue_test_app_setup.exe"
+          download="electron_vue_test_app_setup.exe"
         >
-          <span class="link myFont">Electron Vue App</span>
+          <fa-i
+            icon="fa-solid fa-download"
+            class="link"
+            style="font-size: 30px; margin-right: 30px"
+          ></fa-i>
         </a>
+        <a
+          class="nav-link"
+          style="width: fit-content"
+          href="https://github.com/AndreaL021/test_electron_vue"
+          target="_blank"
+        >
+          <fa-i
+            icon="fa-brands fa-github"
+            class="link"
+            style="font-size: 30px; margin-right: 30px"
+          ></fa-i>
+        </a>
+        <span
+          class="link myFont"
+          @click="electron_vue.expand = !electron_vue.expand"
+          >Electron Vue App</span
+        >
         <fa-i
           icon="fa-solid fa-chevron-down"
+          class="link"
           v-if="!electron_vue.expand"
           @click="electron_vue.expand = true"
-          style="color: white; font-size: 30px; margin-left: 10px"
+          style="font-size: 30px; margin-left: 10px"
         ></fa-i>
         <fa-i
           v-if="electron_vue.expand"
+          class="link"
           icon="fa-solid fa-chevron-up"
           @click="electron_vue.expand = false"
-          style="color: white; font-size: 30px; margin-left: 10px"
+          style="font-size: 30px; margin-left: 10px"
         ></fa-i>
       </div>
       <div class="col-12 col-md-6" v-if="electron_vue.expand">
@@ -225,20 +297,29 @@
       <div
         class="col-12 d-flex justify-content-center align-items-center text-center"
       >
-        <router-link style="width: fit-content" class="nav-link" to="/pokedex"
-          ><span class="link myFont">Pokedex</span></router-link
+        <router-link style="width: fit-content" class="nav-link" to="/pokedex">
+          <fa-i
+            icon="fa-solid fa-arrow-up-right-from-square"
+            class="link"
+            style="font-size: 30px; margin-right: 30px"
+          ></fa-i>
+        </router-link>
+        <span class="link myFont" @click="pokedex.expand = !pokedex.expand"
+          >Pokedex</span
         >
         <fa-i
           icon="fa-solid fa-chevron-down"
+          class="link"
           v-if="!pokedex.expand"
           @click="pokedex.expand = true"
-          style="color: white; font-size: 30px; margin-left: 10px"
+          style="font-size: 30px; margin-left: 10px"
         ></fa-i>
         <fa-i
           v-if="pokedex.expand"
           icon="fa-solid fa-chevron-up"
+          class="link"
           @click="pokedex.expand = false"
-          style="color: white; font-size: 30px; margin-left: 10px"
+          style="font-size: 30px; margin-left: 10px"
         ></fa-i>
       </div>
       <div
@@ -249,7 +330,6 @@
           style="cursor: pointer"
           width="100%"
           :src="pokedex.src"
-          @click="$router.push('/pokedex')"
         />
       </div>
       <div class="col-12 mt-3" v-if="pokedex.expand">
@@ -278,20 +358,29 @@
       <div
         class="col-12 d-flex justify-content-center align-items-center text-center"
       >
-        <router-link style="width: fit-content" class="nav-link" to="/snake"
-          ><span class="link myFont">Snake</span></router-link
+        <router-link style="width: fit-content" class="nav-link" to="/snake">
+          <fa-i
+            icon="fa-solid fa-arrow-up-right-from-square"
+            class="link"
+            style="font-size: 30px; margin-right: 30px"
+          ></fa-i>
+        </router-link>
+        <span class="link myFont" @click="snake.expand = !snake.expand"
+          >Snake</span
         >
         <fa-i
           icon="fa-solid fa-chevron-down"
+          class="link"
           v-if="!snake.expand"
           @click="snake.expand = true"
-          style="color: white; font-size: 30px; margin-left: 10px"
+          style="font-size: 30px; margin-left: 10px"
         ></fa-i>
         <fa-i
           v-if="snake.expand"
+          class="link"
           icon="fa-solid fa-chevron-up"
           @click="snake.expand = false"
-          style="color: white; font-size: 30px; margin-left: 10px"
+          style="font-size: 30px; margin-left: 10px"
         ></fa-i>
       </div>
       <div
@@ -302,7 +391,6 @@
           style="cursor: pointer"
           width="100%"
           :src="snake.src"
-          @click="$router.push('/snake')"
         />
       </div>
       <div class="col-12 mt-3" v-if="snake.expand">
@@ -344,32 +432,49 @@
           href="https://andreal021.github.io/FirstGame/"
           target="_blank"
         >
-          <span class="link myFont">Flappy Bird</span>
+          <fa-i
+            icon="fa-solid fa-arrow-up-right-from-square"
+            class="link"
+            style="font-size: 30px; margin-right: 30px"
+          ></fa-i>
         </a>
+        <a
+          class="nav-link"
+          style="width: fit-content"
+          href="https://github.com/AndreaL021/FirstGame"
+          target="_blank"
+        >
+          <fa-i
+            icon="fa-brands fa-github"
+            class="link"
+            style="font-size: 30px; margin-right: 30px"
+          ></fa-i>
+        </a>
+        <span
+          @click="flappy_bird.expand = !flappy_bird.expand"
+          class="link myFont"
+          >Flappy Bird</span
+        >
         <fa-i
           icon="fa-solid fa-chevron-down"
           v-if="!flappy_bird.expand"
           @click="flappy_bird.expand = true"
-          style="color: white; font-size: 30px; margin-left: 10px"
+          style="font-size: 30px; margin-left: 10px"
+          class="link"
         ></fa-i>
         <fa-i
           v-if="flappy_bird.expand"
           icon="fa-solid fa-chevron-up"
           @click="flappy_bird.expand = false"
-          style="color: white; font-size: 30px; margin-left: 10px"
+          style="font-size: 30px; margin-left: 10px"
+          class="link"
         ></fa-i>
       </div>
       <div
         class="col-12 col-md-6 d-flex justify-content-center align-items-center mt-2"
         v-if="flappy_bird.expand"
       >
-        <a
-          style="width: fit-content"
-          href="https://andreal021.github.io/FirstGame/"
-          target="_blank"
-        >
           <img width="100%" :src="flappy_bird.src" />
-        </a>
       </div>
       <div class="col-12 mt-3" v-if="flappy_bird.expand">
         <p
@@ -404,6 +509,9 @@ import laravel_create_announcement from "@/assets/LaravelEcommerce/create_announ
 import laravel_register from "@/assets/LaravelEcommerce/register.png";
 import laravel_revisor from "@/assets/LaravelEcommerce/revisor_page.png";
 import snake_image from "@/assets/LaravelEcommerce/snake.png";
+import laravel_new_login from "@/assets/Laravel12/login.png";
+import laravel_new_home from "@/assets/Laravel12/home.png";
+import laravel_new_create from "@/assets/Laravel12/create.png";
 export default {
   data() {
     return {
@@ -423,6 +531,15 @@ export default {
         src: pokedex_image,
         expand: false,
       },
+      laravel_ecommerce_new: {
+        images: [
+          laravel_new_login,
+          laravel_new_home,
+          laravel_new_create,
+        ],
+        expand: false,
+      },
+      laravel_new_image_index: 0,
       laravel_ecommerce: {
         images: [
           laravel_homepage,
@@ -433,18 +550,27 @@ export default {
         ],
         expand: false,
       },
+      laravel_image_index: 0,
       framework: {
         src: null,
         expand: false,
       },
-      laravel_image_index: 0,
     };
   },
   components: {},
   methods: {
-    changeImage(n) {
+    changeLaravelNewImage(n) {
+      let newIndex = this.laravel_new_image_index + n;
+      if (newIndex >= this.laravel_ecommerce_new.images.length) {
+        newIndex = 0;
+      } else if (newIndex < 0) {
+        newIndex = this.laravel_ecommerce_new.images.length - 1;
+      }
+      this.laravel_new_image_index = newIndex;
+    },
+    changeLaravelImage(n) {
       let newIndex = this.laravel_image_index + n;
-      if (newIndex > this.laravel_ecommerce.images.length - 1) {
+      if (newIndex >= this.laravel_ecommerce.images.length) {
         newIndex = 0;
       } else if (newIndex < 0) {
         newIndex = this.laravel_ecommerce.images.length - 1;
@@ -468,6 +594,7 @@ export default {
 .link:hover {
   color: gold;
   filter: drop-shadow(10px 10px 10px gold);
+  cursor: pointer;
 }
 .myFont {
   font-family: "Jersey 10", sans-serif;
