@@ -2,6 +2,62 @@
 <template>
   <div class="text-center home" style="overflow: hidden">
     <h1 style="color: white">Projects</h1>
+    <!-- VueFramework -->
+    <div
+      class="row d-flex justify-content-center align-items-center text-center mt-5"
+      style="padding: 10px; background-color: grey"
+    >
+      <div
+        class="col-12 d-flex justify-content-center align-items-center mt-2"
+      >
+        <a
+          class="nav-link"
+          style="width: fit-content"
+          href="https://andreal021.github.io/FlowchartEditor/"
+          target="_blank"
+        >
+          <fa-i
+            icon="fa-solid fa-arrow-up-right-from-square"
+            class="link"
+            style="font-size: 30px; margin-right: 30px"
+          ></fa-i>
+        </a>
+        <a
+          class="nav-link"
+          style="width: fit-content"
+          href="https://github.com/AndreaL021/FlowchartEditor"
+          target="_blank"
+        >
+          <fa-i
+            icon="fa-brands fa-github"
+            class="link"
+            style="font-size: 30px; margin-right: 30px"
+          ></fa-i>
+        </a>
+        <span class="link myFont" @click="flowchart.expand = !flowchart.expand"
+          >Flowchart Editor</span
+        >
+        <fa-i
+          icon="fa-solid fa-chevron-down"
+          v-if="!flowchart.expand"
+          @click="flowchart.expand = true"
+          style="color: white; font-size: 30px; margin-left: 10px"
+        ></fa-i>
+        <fa-i
+          v-if="flowchart.expand"
+          icon="fa-solid fa-chevron-up"
+          @click="flowchart.expand = false"
+          style="color: white; font-size: 30px; margin-left: 10px"
+        ></fa-i>
+      </div>
+      <div
+        v-if="flowchart.expand"
+        class="col-12 col-md-6 d-flex justify-content-center align-items-center mt-2"
+      >
+          <img width="100%" :src="flowchart.src" />
+    </div>
+      <div class="col-12 mt-3" v-if="flowchart.expand"></div>
+    </div>
     <!-- Laravel12App -->
     <div
       class="row d-flex justify-content-center align-items-center text-center mt-5"
@@ -502,6 +558,7 @@
 <script>
 import electron_vue_video from "@/assets/ElectronVueApp/ElectronVueVideo.mp4";
 import flappy_bird_image from "@/assets/flappy_bird.png";
+import flowchart_image from "@/assets/flowchart.png";
 import pokedex_image from "@/assets/pokedex.png";
 import laravel_badge from "@/assets/LaravelEcommerce/badge.png";
 import laravel_homepage from "@/assets/LaravelEcommerce/homepage.png";
@@ -521,6 +578,10 @@ export default {
       },
       flappy_bird: {
         src: flappy_bird_image,
+        expand: false,
+      },
+      flowchart: {
+        src: flowchart_image,
         expand: false,
       },
       electron_vue: {
