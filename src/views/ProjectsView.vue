@@ -16,13 +16,7 @@
           href="https://github.com/AndreaL021/segna_presenze_fe"
           target="_blank"
         >
-          <span style="color: white">
-            FE
-            <fa-i
-              icon="fa-solid fa-arrow-right"
-              style="margin-right: 10px"
-            ></fa-i
-          ></span>
+          <span style="color: white; margin-right: 10px"> FE</span>
           <fa-i
             icon="fa-brands fa-github"
             class="link"
@@ -35,13 +29,7 @@
           href="https://github.com/AndreaL021/segna_presenze_be"
           target="_blank"
         >
-          <span style="color: white">
-            BE
-            <fa-i
-              icon="fa-solid fa-arrow-right"
-              style="margin-right: 10px"
-            ></fa-i
-          ></span>
+          <span style="color: white; margin-right: 10px"> BE</span>
           <fa-i
             icon="fa-brands fa-github"
             class="link"
@@ -54,16 +42,14 @@
           href="/readme.txt"
           download
         >
-          <span style="color: white">
-            readme
-          </span>
+          <span style="color: white"> readme </span>
           <fa-i
             icon="fa-solid fa-download"
             class="link"
             style="font-size: 30px; margin-right: 20px"
           ></fa-i>
         </a>
-        
+
         <span
           class="link myFont"
           @click="ionic_web_app.expand = !ionic_web_app.expand"
@@ -94,14 +80,23 @@
           @click="changeIonicImage(-1)"
           style="font-size: 30px; margin-right: 5px"
         ></fa-i>
-        <div class="myFont" @click="framework.expand = !framework.expand"
-          style="display: flex; flex-direction: column; font-size: 30px; color: white;">(work in progress)
-        <img
-          style="cursor: pointer"
-          width="100%"
-          :src="ionic_web_app.images[ionic_web_app_image_index]"
-        /></div
+        <div
+          class="myFont"
+          @click="framework.expand = !framework.expand"
+          style="
+            display: flex;
+            flex-direction: column;
+            font-size: 30px;
+            color: white;
+          "
         >
+          (work in progress)
+          <img
+            style="cursor: pointer"
+            width="100%"
+            :src="ionic_web_app.images[ionic_web_app_image_index]"
+          />
+        </div>
         <fa-i
           class="link"
           icon="fa-solid fa-chevron-right"
