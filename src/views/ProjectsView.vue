@@ -53,7 +53,7 @@
         <span
           class="link myFont"
           @click="ionic_web_app.expand = !ionic_web_app.expand"
-          >IonicVue + Nestjs WebApp</span
+          >IonicVue + Nestjs</span
         >
         <fa-i
           icon="fa-solid fa-chevron-down"
@@ -90,7 +90,9 @@
             color: white;
           "
         >
-          (work in progress)
+        cross-platform app
+        <br>
+          (work in progress) 
           <img
             style="cursor: pointer"
             width="100%"
