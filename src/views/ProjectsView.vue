@@ -2,6 +2,98 @@
 <template>
   <div class="text-center home" style="overflow: hidden">
     <h1 style="color: white">Projects</h1>
+    <!-- search engine -->
+    <div
+      class="row d-flex justify-content-center align-items-center text-center mt-5"
+      style="padding: 10px; background-color: grey"
+    >
+      <div
+        class="col-12 d-flex justify-content-center align-items-center text-center"
+      >
+        <a
+          class="nav-link"
+          style="width: fit-content"
+          href="https://github.com/AndreaL021/research-engine-fe"
+          target="_blank"
+        >
+          <span style="color: white; margin-right: 10px"> FE</span>
+          <fa-i
+            icon="fa-brands fa-github"
+            class="link"
+            style="font-size: 30px; margin-right: 20px"
+          ></fa-i>
+        </a>
+        <a
+          class="nav-link"
+          style="width: fit-content"
+          href="https://github.com/AndreaL021/research-engine-be"
+          target="_blank"
+        >
+          <span style="color: white; margin-right: 10px"> BE</span>
+          <fa-i
+            icon="fa-brands fa-github"
+            class="link"
+            style="font-size: 30px; margin-right: 20px"
+          ></fa-i>
+        </a>
+
+        <span
+          class="link myFont"
+          @click="search_engine.expand = !search_engine.expand"
+          >search engine python</span
+        >
+        <fa-i
+          icon="fa-solid fa-chevron-down"
+          class="link"
+          v-if="!search_engine.expand"
+          @click="search_engine.expand = true"
+          style="font-size: 30px; margin-left: 10px"
+        ></fa-i>
+        <fa-i
+          v-if="search_engine.expand"
+          icon="fa-solid fa-chevron-up"
+          class="link"
+          @click="search_engine.expand = false"
+          style="font-size: 30px; margin-left: 10px"
+        ></fa-i>
+      </div>
+      <div
+        v-if="search_engine.expand"
+        class="col-12 col-md-6 d-flex justify-content-center align-items-center mt-2"
+      >
+        <fa-i
+          icon="fa-solid fa-chevron-left"
+          class="link"
+          @click="changeSearchEngine(-1)"
+          style="font-size: 30px; margin-right: 5px"
+        ></fa-i>
+        <div
+          class="myFont"
+          @click="framework.expand = !framework.expand"
+          style="
+            display: flex;
+            flex-direction: column;
+            font-size: 30px;
+            color: white;
+          "
+        >
+        Vuejs+Python+Fast Api  <br> 
+        web retrieval + llm answer + multiple provider
+        <br> 
+          <img
+            style="cursor: pointer"
+            width="100%"
+            :src="search_engine.images[search_engine_image_index]"
+          />
+        </div>
+        <fa-i
+          class="link"
+          icon="fa-solid fa-chevron-right"
+          @click="changeSearchEngine(+1)"
+          style="font-size: 30px; margin-left: 5px"
+        ></fa-i>
+      </div>
+    </div>
     <!-- IonicVue WebApp -->
     <div
       class="row d-flex justify-content-center align-items-center text-center mt-5"
@@ -666,6 +758,9 @@ import laravel_new_home from "@/assets/Laravel12/home.png";
 import laravel_new_create from "@/assets/Laravel12/create.png";
 import web_app_attendance from "@/assets/SegnaPresenze/attendance.png";
 import web_app_users from "@/assets/SegnaPresenze/users.png";
+import search1 from "@/assets/SearchEngine/search1.png";
+import search2 from "@/assets/SearchEngine/search2.png";
+import search3 from "@/assets/SearchEngine/search3.png";
 export default {
   data() {
     return {
@@ -693,6 +788,10 @@ export default {
         images: [web_app_attendance, web_app_users],
         expand: false,
       },
+      search_engine:{
+        images: [search1, search2, search3],
+        expand: false,
+      },
       laravel_ecommerce_new: {
         images: [laravel_new_login, laravel_new_home, laravel_new_create],
         expand: false,
@@ -710,6 +809,7 @@ export default {
       laravel_image_index: 0,
       laravel_new_image_index: 0,
       ionic_web_app_image_index: 0,
+      search_engine_image_index:0,
       framework: {
         src: null,
         expand: false,
@@ -718,6 +818,15 @@ export default {
   },
   components: {},
   methods: {
+    changeSearchEngine(n) {
+      let newIndex = this.search_engine_image_index + n;
+      if (newIndex >= this.search_engine.images.length) {
+        newIndex = 0;
+      } else if (newIndex < 0) {
+        newIndex = this.search_engine.images.length - 1;
+      }
+      this.search_engine_image_index = newIndex;
+    },
     changeIonicImage(n) {
       let newIndex = this.ionic_web_app_image_index + n;
       if (newIndex >= this.ionic_web_app.images.length) {
