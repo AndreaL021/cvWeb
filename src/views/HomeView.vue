@@ -102,10 +102,10 @@ export default {
       canvas.setAttribute("width", w);
       canvas.setAttribute("height", h);
       if (w <= 576) {
-        canvas.style.backgroundPosition = "center";
+        canvas.style.backgroundPosition = "center calc(60%+50px)";
         canvas.style.backgroundSize = "80vw";
       } else if (w <= 768) {
-        canvas.style.backgroundPosition = "center";
+        canvas.style.backgroundPosition = "center calc(60%+50px)";
         canvas.style.backgroundSize = "60vw";
       } else {
         canvas.style.backgroundSize = "35vw";
