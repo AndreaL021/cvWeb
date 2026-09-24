@@ -1,9 +1,14 @@
 <template>
   <div
-    style="background-color: rgb(33, 37, 41); color: white"
-    class="sticky-bottom container-fluid py-3"
+    style="background-color: rgb(33, 37, 41); color: white;"
+    class="container-fluid py-5"
   >
-    <div class="text-center" style="font-size: 25px">Contacts</div>
+    <div
+      class="text-center"
+      style="font-size: 25px;"
+    >
+      Contact
+    </div>
     <div class="row d-flex justify-content-center align-items-center">
       <div class="col-8 col-lg-5" v-if="form">
         <input
@@ -66,7 +71,7 @@
     </div>
 
     <div class="row d-flex justify-content-center mt-4" style="font-size: 24px">
-      <div class="col-1">
+      <div class="col-4 d-flex justify-content-center">
         <a
           href="https://www.linkedin.com/in/andrea-lopasso-050a28225/"
           target="_blank"
@@ -79,29 +84,7 @@
           ></fa-i>
         </a>
       </div>
-      <div class="col-1">
-        <a href="https://www.instagram.com/andrea_lopasso_web_developer/" target="_blank"
-          ><fa-i
-            icon="fa-brands fa-instagram"
-            :beat="ig_beat"
-            @mouseover="ig_beat = true"
-            @mouseleave="ig_beat = false"
-            style="color: white"
-          ></fa-i>
-        </a>
-      </div>
-      <div class="col-1">
-        <a href="https://vcard.link/card/DYUT.vcf" download>
-          <fa-i
-            icon="fa-solid fa-phone"
-            :beat="phone_beat"
-            @mouseover="phone_beat = true"
-            @mouseleave="phone_beat = false"
-            style="color: white"
-          ></fa-i>
-        </a>
-      </div>
-      <div class="col-1">
+      <div class="col-4 d-flex justify-content-center">
         <a href="mailto:lopassoandrea1@gmail.com">
           <fa-i
             icon="fa-regular fa-envelope"
@@ -124,11 +107,8 @@ export default {
   data() {
     return {
       overlay: false,
-      ig_beat: false,
       linkedin_beat: false,
-      phone_beat: false,
       email_beat: false,
-      overlay: false,
       form: true,
       form_data: {
         name: "",

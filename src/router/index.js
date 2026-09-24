@@ -1,16 +1,35 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import PortfolioView from '../views/PortfolioView.vue'
 import SnakeGame from '../views/SnakeGame.vue'
 import PokedexView from '../views/PokedexView.vue'
-import ProjectsView from '../views/ProjectsView.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
+
+  scrollBehavior(to, from, savedPosition) {
+
+    if (savedPosition) return savedPosition
+
+    if (to.hash) {
+
+      const navbar = document.querySelector('header .navbar')
+      const navbarHeight = navbar?.getBoundingClientRect().height ?? 0
+      
+      return {
+        el: to.hash,
+        top: navbarHeight,
+        behavior: 'smooth'
+      }
+
+    }
+    return { top: 0 }
+  },
+
   routes: [
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: PortfolioView
     },
     {
       path: '/snake',
@@ -21,11 +40,6 @@ const router = createRouter({
       path: '/pokedex',
       name: 'pokedex',
       component: PokedexView
-    },
-    {
-      path: '/projects',
-      name: 'projects',
-      component: ProjectsView
     }
   ]
 })

@@ -7,12 +7,12 @@
   <main style="min-height: 80vh">
     <RouterView />
   </main>
-  <footer>
+  <footer id="contact">
     <footer-bar />
   </footer>
 </template>
 <script>
-import { RouterLink, RouterView } from "vue-router";
+import { RouterView } from "vue-router";
 import NavBar from "./components/NavBar.vue";
 import FooterBar from "./components/FooterBar.vue";
 export default {
@@ -20,6 +20,7 @@ export default {
   components: {
     NavBar,
     FooterBar,
+    RouterView,
   },
   data() {
     return {};

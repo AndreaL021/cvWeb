@@ -1,53 +1,30 @@
 
 <template>
-  <div class="home" style="overflow: hidden; background-color: black">
-    <canvas id="canvas" width="100vw" height="100vh"></canvas>
-    <div
-      style="color: white; background-color: goldenrod; overflow: hidden"
-      v-motion
-      :initial="{
-        y: 270,
-        opacity: 0,
-      }"
-      :visible-once="{
-        y: 0,
-        opacity: 1,
-        transition: {
-          duration: 1300,
-          ease: 'easeInOut',
-        },
-      }"
-    >
-      <div
-        style="height: 300px"
-        class="d-flex justify-content-around align-items-center"
-      >
-        <a :href="pdf" target="_blank" class="btn btn-lg resume-btn">Resume</a>
-        <router-link class="btn btn-lg resume-btn ml-5" to="/projects"
-          >Projects</router-link
-        >
-        <div class="bg"></div>
-        <div class="bg bg2"></div>
-        <div class="bg bg3"></div>
-        <div class="bg4"></div>
+  <div id="home" class="home" style="overflow: hidden; background-color: black">
+    <div class="hero-canvas">
+      <canvas id="canvas" width="100vw" height="100vh"></canvas>
+      <div class="hero-content">
+        <h1>Full Stack Web Developer</h1>
+        <a :href="pdf" target="_blank" class="btn btn-lg hero-resume">
+          <fa-i
+            icon="fa-solid fa-download"
+            class="link"
+            style="font-size: 30px; margin-right: 20px"
+          ></fa-i>
+          Resume
+        </a> <br>
+        <a :href="pdfen" target="_blank" class="btn btn-lg hero-resume">
+          <fa-i
+            icon="fa-solid fa-download"
+            class="link"
+            style="font-size: 30px; margin-right: 20px"
+          ></fa-i>
+          Resume EN
+        </a>
       </div>
     </div>
     <!-- <div
       style="color: white"
-      v-motion
-      :initial="{
-        opacity: 0,
-      }"
-      :visible="{
-        opacity: 1,
-        transition: {
-          duration: 1000,
-          type: 'keyframes',
-          ease: 'easeInOut',
-          repeat: Infinity,
-          repeatType: 'mirror',
-        },
-      }"
     >
       TEST
     </div> -->
@@ -60,13 +37,15 @@
 </template>
 <script>
 import pdf from "@/assets/CV.pdf";
-import GearMotion from "@/components/GearMotion.vue";
+import pdfen from "@/assets/CVen.pdf";
 import svg from "@/assets/coding.svg";
 export default {
   data() {
     return {
       svg,
       pdf,
+      pdfen,
+      stopParticles: null,
       left: 50,
       top: 100,
       move: {
@@ -75,12 +54,14 @@ export default {
       },
     };
   },
-  components: {
-    GearMotion,
-  },
+  components: {},
   methods: {},
   watch: {},
+  beforeUnmount() {
+    this.stopParticles?.();
+  },
   mounted() {
+    let animationTimer;
     let w = window.innerWidth;
     let h = window.innerHeight + 100;
     let canvas = document.getElementById("canvas");
@@ -98,7 +79,7 @@ export default {
 
     // Aggiungi un'immagine SVG di sfondo al canvas utilizzando CSS
     canvas.style.backgroundImage = `url(${svg})`;
-    canvas.style.backgroundPosition = "center calc(50% + 70px)";
+    canvas.style.backgroundPosition = "center calc(55% + 80px)";
     canvas.style.backgroundRepeat = "no-repeat";
     checkScreen();
     function create() {
@@ -123,53 +104,35 @@ export default {
       if (w <= 576) {
         canvas.style.backgroundPosition = "center";
         canvas.style.backgroundSize = "80vw";
-      } else {
-        canvas.style.backgroundSize = "40vw";
-        canvas.style.backgroundPosition = "center calc(50% + 70px)";
-      }
-    }
-    function fillText() {
-      let fontSize;
-      let top = 100;
-      if (w <= 576) {
-        fontSize = "40px";
-        top = 150;
       } else if (w <= 768) {
-        fontSize = "50px";
-        top = 100;
+        canvas.style.backgroundPosition = "center";
+        canvas.style.backgroundSize = "60vw";
       } else {
-        fontSize = "60px";
-        top = 100;
+        canvas.style.backgroundSize = "35vw";
+        canvas.style.backgroundPosition = "center calc(60%+50px)";
       }
-      ctx.font = fontSize + ' "Jersey 10", sans-serif'; // Imposta il font e la dimensione del testo
-      ctx.fillStyle = "white"; // Imposta il colore del testo
-      let text = "WEB DEVELOPER";
-      let textWidth = ctx.measureText(text).width;
-      ctx.fillText(text, (w - textWidth) / 2, top); // Disegna il testo
     }
     function particles() {
       ctx.clearRect(0, 0, w, h);
 
       checkScreen();
-      fillText();
 
-      canvas.addEventListener("mousemove", MouseMove, false);
 
       for (var i = 0; i < arc; i++) {
         var li = parts[i];
-      if (
-        !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        )
-      ) {
-        var distanceFactor = DistanceBetween(mouse, parts[i]);
-        var distanceFactor = Math.max(
-          Math.min(15 - distanceFactor / 10, 10),
-          1
-        );
-      }else{
-        var distanceFactor = 3;
-      }
+        if (
+          !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+            navigator.userAgent
+          )
+        ) {
+          var distanceFactor = DistanceBetween(mouse, parts[i]);
+          var distanceFactor = Math.max(
+            Math.min(15 - distanceFactor / 10, 10),
+            1
+          );
+        } else {
+          var distanceFactor = 3;
+        }
         ctx.beginPath();
         ctx.arc(li.x, li.y, li.size * distanceFactor, 0, Math.PI * 2, false);
         ctx.fillStyle = li.c;
@@ -196,7 +159,7 @@ export default {
       if (time < speed) {
         time++;
       }
-      setTimeout(particles, 1000 / rate);
+      animationTimer = setTimeout(particles, 1000 / rate);
     }
     function MouseMove(e) {
       mouse.x = e.layerX;
@@ -208,6 +171,11 @@ export default {
       return Math.sqrt(dx * dx + dy * dy);
     }
 
+    canvas.addEventListener("mousemove", MouseMove, false);
+    this.stopParticles = () => {
+      clearTimeout(animationTimer);
+      canvas.removeEventListener("mousemove", MouseMove, false);
+    };
     create();
     particles();
   },
@@ -216,89 +184,43 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Jersey+10&display=swap");
 canvas {
+  display: block;
   overflow: hidden;
   background-color: black;
 }
-.resume-btn {
+.hero-canvas {
+  position: relative;
+}
+.hero-content {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 100%;
+  padding: 0 20px;
+  text-align: center;
+  pointer-events: none;
+}
+.hero-content h1 {
+  margin: 0 0 20px;
+  color: white;
+  font-family: "Jersey 10", sans-serif;
+  font-size: clamp(40px, 6vw, 60px);
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+.hero-resume {
+  pointer-events: auto;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
   background-color: white;
   font-weight: bold;
   font-style: italic;
   color: black;
+  margin-top: 10px;
+  width: 200px;
 }
-.resume-btn:hover {
-  animation-duration: 0.7s;
-  background-color: transparent;
-  -webkit-box-shadow: 0px 0px 19px 12px #ffd700;
-  box-shadow: 0px 0px 19px 12px #ffd700;
-  font-weight: bold;
-  font-style: italic;
-  color: gold;
-}
-.bg {
-  animation: slide 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(
-    -60deg,
-    rgb(128, 150, 0) 50%,
-    rgb(0, 0, 0) 50%
-  );
-  bottom: 0;
-  left: -50%;
-  opacity: 0.5;
-  position: fixed;
-  right: -50%;
-  top: 0;
-  z-index: -1;
-}
-.bg2 {
-  animation-direction: alternate-reverse;
-  animation-duration: 4s;
-}
-.bg3 {
-  animation-duration: 5s;
-}
-.bg3.fast-animation {
-  animation-duration: 3s;
-}
-.bg4 {
-  animation: slide2 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(
-    -60deg,
-    rgb(0, 0, 0) 50%,
-    rgb(128, 150, 0) 50%
-  );
-  bottom: 0;
-  animation-direction: alternate-reverse;
-  animation-duration: 8s;
-  left: -50%;
-  opacity: 0.5;
-  position: fixed;
-  right: -50%;
-  top: 0;
-  z-index: -1;
-}
-@keyframes slide {
-  0% {
-    transform: translateX(-25%);
-  }
-  100% {
-    transform: translateX(25%);
-  }
-}
-@keyframes slide2 {
-  0% {
-    transform: translateX(50%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
-}
-.home {
-  min-height: 100vh;
-}
-@media only screen and (max-width: 576px) {
-  .home {
-    min-height: 80vh;
-    background-color: rgb(33, 37, 41);
-  }
+.hero-resume:hover,
+.hero-resume:focus-visible {
+  background-color: #0d6efd;
+  color: white;
 }
 </style>

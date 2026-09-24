@@ -12,7 +12,6 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { MotionPlugin } from "@vueuse/motion";
 import { GesturePlugin } from "@vueuse/gesture";
 // import { useFullscreen } from '@vueuse/core'
 import Autocomplete from "@/components/utils/SelectComponent.vue"
@@ -24,7 +23,6 @@ library.add(far);
 
 const app = createApp(App)
 
-app.use(MotionPlugin)
 app.use(GesturePlugin)
 app.use(createPinia())
 app.use(router)
@@ -33,26 +31,3 @@ app.component("autocomplete", Autocomplete)
 app.component("my-dialog", Dialog)
 
 app.mount('#app')
-
-// PER CREARE NUOVE ANIMAZIONI
-// app.use(MotionPlugin, {
-//     directives: {
-//       'pop-bottom-test': {
-//         initial: {
-//           scale: 0,
-//           opacity: 0,
-//           y: 100,
-//         },
-//         visible: {
-//           scale: 1,
-//           opacity: 1,
-//           y: 0,
-//           transition: {
-//             duration: 1000,
-//             type: 'keyframes',
-//             ease: 'ease-in-out',
-//           },
-//         },
-//       },
-//     },
-//   })

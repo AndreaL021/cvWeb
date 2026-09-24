@@ -1,7 +1,106 @@
-
 <template>
-  <div class="text-center home" style="overflow: hidden">
+  <div class="text-center home projects-grid pt-5" style="overflow: hidden">
     <h1 style="color: white">Projects</h1>
+
+
+
+    <!-- Weather app -->
+    <div
+      class="row d-flex justify-content-center align-items-center text-center mt-5"
+      style="padding: 10px; background-color: grey"
+    >
+      <div
+        class="col-12 d-flex justify-content-center align-items-center text-center"
+      >
+        <div class="project-actions">
+          
+          <a
+            class="nav-link"
+            style="width: fit-content"
+            href="https://andreal021.github.io/weather-app/"
+            target="_blank"
+          >
+            <fa-i
+              icon="fa-solid fa-arrow-up-right-from-square"
+              class="link"
+              style="font-size: 30px; margin-right: 20px"
+            ></fa-i>
+          </a>
+
+          <a
+            class="nav-link"
+            style="width: fit-content"
+            href="https://github.com/AndreaL021/weather-app"
+            target="_blank"
+          >
+            <fa-i
+              icon="fa-brands fa-github"
+              class="link"
+              style="font-size: 30px; margin-right: 20px"
+            ></fa-i>
+          </a>
+          <a
+            class="nav-link"
+            style="width: fit-content"
+            href="/weatherAPK.apk"
+            download="WeatherApp.apk"
+          >
+            <fa-i
+              icon="fa-solid fa-download"
+              class="link"
+              style="font-size: 30px; margin-right: 20px"
+            ></fa-i>
+            <span style="color: white; margin-right: 10px"> {{'<-'}} Android download </span>
+            
+          </a>
+        </div>
+
+        <span
+          class="link myFont"
+          @click="weather.expand = !weather.expand"
+          >WeatherApp</span
+        >
+        <fa-i
+          icon="fa-solid fa-chevron-down"
+          class="link"
+          v-if="!weather.expand"
+          @click="weather.expand = true"
+          style="font-size: 30px; margin-left: 10px"
+        ></fa-i>
+        <fa-i
+          v-if="weather.expand"
+          icon="fa-solid fa-chevron-up"
+          class="link"
+          @click="search_engine.expand = false"
+          style="font-size: 30px; margin-left: 10px"
+        ></fa-i>
+      </div>
+      <div
+        style="border-top: 2px solid #212529"
+        v-if="weather.expand"
+        class="col-12 col-md-6 d-flex justify-content-center align-items-center mt-2"
+      >
+        <div
+          class="myFont"
+          style="
+            display: flex;
+            flex-direction: column;
+            font-size: 30px;
+            color: white;
+          "
+        >
+          React native + expo
+          <br />
+          <img
+            width="100%"
+            :src="weather.src"
+          />
+        </div>
+      </div>
+    </div>
+
+
+
     <!-- search engine -->
     <div
       class="row d-flex justify-content-center align-items-center text-center mt-5"
@@ -10,32 +109,34 @@
       <div
         class="col-12 d-flex justify-content-center align-items-center text-center"
       >
-        <a
-          class="nav-link"
-          style="width: fit-content"
-          href="https://github.com/AndreaL021/research-engine-fe"
-          target="_blank"
-        >
-          <span style="color: white; margin-right: 10px"> FE</span>
-          <fa-i
-            icon="fa-brands fa-github"
-            class="link"
-            style="font-size: 30px; margin-right: 20px"
-          ></fa-i>
-        </a>
-        <a
-          class="nav-link"
-          style="width: fit-content"
-          href="https://github.com/AndreaL021/research-engine-be"
-          target="_blank"
-        >
-          <span style="color: white; margin-right: 10px"> BE</span>
-          <fa-i
-            icon="fa-brands fa-github"
-            class="link"
-            style="font-size: 30px; margin-right: 20px"
-          ></fa-i>
-        </a>
+        <div class="project-actions">
+          <a
+            class="nav-link"
+            style="width: fit-content"
+            href="https://github.com/AndreaL021/research-engine-fe"
+            target="_blank"
+          >
+            <fa-i
+              icon="fa-brands fa-github"
+              class="link"
+              style="font-size: 30px; margin-right: 20px"
+            ></fa-i>
+            <span style="color: white; margin-right: 10px"> FE</span>
+          </a>
+          <a
+            class="nav-link"
+            style="width: fit-content"
+            href="https://github.com/AndreaL021/research-engine-be"
+            target="_blank"
+          >
+            <fa-i
+              icon="fa-brands fa-github"
+              class="link"
+              style="font-size: 30px; margin-right: 20px"
+            ></fa-i>
+            <span style="color: white; margin-right: 10px"> BE</span>
+          </a>
+        </div>
 
         <span
           class="link myFont"
@@ -58,6 +159,7 @@
         ></fa-i>
       </div>
       <div
+        style="border-top: 2px solid #212529"
         v-if="search_engine.expand"
         class="col-12 col-md-6 d-flex justify-content-center align-items-center mt-2"
       >
@@ -69,7 +171,6 @@
         ></fa-i>
         <div
           class="myFont"
-          @click="framework.expand = !framework.expand"
           style="
             display: flex;
             flex-direction: column;
@@ -77,11 +178,10 @@
             color: white;
           "
         >
-        Vuejs+Python+Fast Api  <br> 
-        web retrieval + llm answer + multiple provider
-        <br> 
+          Vuejs+Python+Fast Api <br />
+          web retrieval + llm answer + multiple provider
+          <br />
           <img
-            style="cursor: pointer"
             width="100%"
             :src="search_engine.images[search_engine_image_index]"
           />
@@ -94,6 +194,9 @@
         ></fa-i>
       </div>
     </div>
+
+
+
     <!-- IonicVue WebApp -->
     <div
       class="row d-flex justify-content-center align-items-center text-center mt-5"
@@ -102,45 +205,47 @@
       <div
         class="col-12 d-flex justify-content-center align-items-center text-center"
       >
-        <a
-          class="nav-link"
-          style="width: fit-content"
-          href="https://github.com/AndreaL021/segna_presenze_fe"
-          target="_blank"
-        >
-          <span style="color: white; margin-right: 10px"> FE</span>
-          <fa-i
-            icon="fa-brands fa-github"
-            class="link"
-            style="font-size: 30px; margin-right: 20px"
-          ></fa-i>
-        </a>
-        <a
-          class="nav-link"
-          style="width: fit-content"
-          href="https://github.com/AndreaL021/segna_presenze_be"
-          target="_blank"
-        >
-          <span style="color: white; margin-right: 10px"> BE</span>
-          <fa-i
-            icon="fa-brands fa-github"
-            class="link"
-            style="font-size: 30px; margin-right: 20px"
-          ></fa-i>
-        </a>
-        <a
-          class="nav-link"
-          style="width: fit-content"
-          href="/readme.txt"
-          download
-        >
-          <span style="color: white"> readme </span>
-          <fa-i
-            icon="fa-solid fa-download"
-            class="link"
-            style="font-size: 30px; margin-right: 20px"
-          ></fa-i>
-        </a>
+        <div class="project-actions">
+          <a
+            class="nav-link"
+            style="width: fit-content"
+            href="https://github.com/AndreaL021/segna_presenze_fe"
+            target="_blank"
+          >
+            <fa-i
+              icon="fa-brands fa-github"
+              class="link"
+              style="font-size: 30px; margin-right: 20px"
+            ></fa-i>
+            <span style="color: white; margin-right: 10px"> FE</span>
+          </a>
+          <a
+            class="nav-link"
+            style="width: fit-content"
+            href="https://github.com/AndreaL021/segna_presenze_be"
+            target="_blank"
+          >
+            <fa-i
+              icon="fa-brands fa-github"
+              class="link"
+              style="font-size: 30px; margin-right: 20px"
+            ></fa-i>
+            <span style="color: white; margin-right: 10px"> BE</span>
+          </a>
+          <a
+            class="nav-link"
+            style="width: fit-content"
+            href="/readme.txt"
+            download
+          >
+            <fa-i
+              icon="fa-solid fa-download"
+              class="link"
+              style="font-size: 30px; margin-right: 20px"
+            ></fa-i>
+            <span style="color: white"> readme </span>
+          </a>
+        </div>
 
         <span
           class="link myFont"
@@ -163,6 +268,7 @@
         ></fa-i>
       </div>
       <div
+        style="border-top: 2px solid #212529"
         v-if="ionic_web_app.expand"
         class="col-12 col-md-6 d-flex justify-content-center align-items-center mt-2"
       >
@@ -174,7 +280,6 @@
         ></fa-i>
         <div
           class="myFont"
-          @click="framework.expand = !framework.expand"
           style="
             display: flex;
             flex-direction: column;
@@ -182,11 +287,10 @@
             color: white;
           "
         >
-        cross-platform app
-        <br>
-          (work in progress) 
+          cross-platform app
+          <br />
+          (work in progress)
           <img
-            style="cursor: pointer"
             width="100%"
             :src="ionic_web_app.images[ionic_web_app_image_index]"
           />
@@ -199,36 +303,41 @@
         ></fa-i>
       </div>
     </div>
+
+
+
     <!-- Flowchart Editor -->
     <div
       class="row d-flex justify-content-center align-items-center text-center mt-5"
       style="padding: 10px; background-color: grey"
     >
       <div class="col-12 d-flex justify-content-center align-items-center mt-2">
-        <a
-          class="nav-link"
-          style="width: fit-content"
-          href="https://andreal021.github.io/FlowchartEditor/"
-          target="_blank"
-        >
-          <fa-i
-            icon="fa-solid fa-arrow-up-right-from-square"
-            class="link"
-            style="font-size: 30px; margin-right: 30px"
-          ></fa-i>
-        </a>
-        <a
-          class="nav-link"
-          style="width: fit-content"
-          href="https://github.com/AndreaL021/FlowchartEditor"
-          target="_blank"
-        >
-          <fa-i
-            icon="fa-brands fa-github"
-            class="link"
-            style="font-size: 30px; margin-right: 30px"
-          ></fa-i>
-        </a>
+        <div class="project-actions">
+          <a
+            class="nav-link"
+            style="width: fit-content"
+            href="https://andreal021.github.io/FlowchartEditor/"
+            target="_blank"
+          >
+            <fa-i
+              icon="fa-solid fa-arrow-up-right-from-square"
+              class="link"
+              style="font-size: 30px; margin-right: 30px"
+            ></fa-i>
+          </a>
+          <a
+            class="nav-link"
+            style="width: fit-content"
+            href="https://github.com/AndreaL021/FlowchartEditor"
+            target="_blank"
+          >
+            <fa-i
+              icon="fa-brands fa-github"
+              class="link"
+              style="font-size: 30px; margin-right: 30px"
+            ></fa-i>
+          </a>
+        </div>
         <span class="link myFont" @click="flowchart.expand = !flowchart.expand"
           >Flowchart Editor</span
         >
@@ -246,13 +355,16 @@
         ></fa-i>
       </div>
       <div
+        style="border-top: 2px solid #212529"
         v-if="flowchart.expand"
         class="col-12 col-md-6 d-flex justify-content-center align-items-center mt-2"
       >
-        <img width="100%" :src="flowchart.src" />
+        <img style="margin-top: 15px" width="100%" :src="flowchart.src" />
       </div>
-      <div class="col-12 mt-3" v-if="flowchart.expand"></div>
     </div>
+
+
+
     <!-- Laravel12App -->
     <div
       class="row d-flex justify-content-center align-items-center text-center mt-5"
@@ -261,30 +373,32 @@
       <div
         class="col-12 d-flex justify-content-center align-items-center text-center"
       >
-        <a
-          class="nav-link"
-          style="width: fit-content"
-          href="https://laravel12-ecommerce-main-olsbl8.laravel.cloud/"
-          target="_blank"
-        >
-          <fa-i
-            icon="fa-solid fa-arrow-up-right-from-square"
-            class="link"
-            style="font-size: 30px; margin-right: 30px"
-          ></fa-i>
-        </a>
-        <a
-          class="nav-link"
-          style="width: fit-content"
-          href="https://github.com/AndreaL021/laravel12-ecommerce"
-          target="_blank"
-        >
-          <fa-i
-            icon="fa-brands fa-github"
-            class="link"
-            style="font-size: 30px; margin-right: 30px"
-          ></fa-i>
-        </a>
+        <div class="project-actions">
+          <a
+            class="nav-link"
+            style="width: fit-content"
+            href="https://laravel12-ecommerce-main-olsbl8.laravel.cloud/"
+            target="_blank"
+          >
+            <fa-i
+              icon="fa-solid fa-arrow-up-right-from-square"
+              class="link"
+              style="font-size: 30px; margin-right: 30px"
+            ></fa-i>
+          </a>
+          <a
+            class="nav-link"
+            style="width: fit-content"
+            href="https://github.com/AndreaL021/laravel12-ecommerce"
+            target="_blank"
+          >
+            <fa-i
+              icon="fa-brands fa-github"
+              class="link"
+              style="font-size: 30px; margin-right: 30px"
+            ></fa-i>
+          </a>
+        </div>
         <span
           class="link myFont"
           @click="laravel_ecommerce_new.expand = !laravel_ecommerce_new.expand"
@@ -307,6 +421,7 @@
       </div>
       <div
         v-if="laravel_ecommerce_new.expand"
+        style="border-top: 2px solid #212529"
         class="col-12 col-md-6 d-flex justify-content-center align-items-center mt-2"
       >
         <fa-i
@@ -315,9 +430,8 @@
           @click="changeLaravelNewImage(-1)"
           style="font-size: 30px; margin-right: 5px"
         ></fa-i>
-        <img
-          style="cursor: pointer"
-          width="100%"
+        <img style="margin-top: 15px"
+          width="95%"
           :src="laravel_ecommerce_new.images[laravel_new_image_index]"
         />
         <fa-i
@@ -328,6 +442,9 @@
         ></fa-i>
       </div>
     </div>
+
+
+
     <!-- VueFramework -->
     <div
       class="row d-flex justify-content-center align-items-center text-center mt-5"
@@ -336,32 +453,34 @@
       <div
         class="col-12 col-md-6 d-flex justify-content-center align-items-center mt-2"
       >
-        <a
-          class="nav-link"
-          style="width: fit-content"
-          href="https://andreal021.github.io/VueFramework/"
-          target="_blank"
-        >
-          <fa-i
-            icon="fa-solid fa-arrow-up-right-from-square"
-            class="link"
-            style="font-size: 30px; margin-right: 30px"
-          ></fa-i>
-        </a>
-        <a
-          class="nav-link"
-          style="width: fit-content"
-          href="https://github.com/AndreaL021/VueFramework"
-          target="_blank"
-        >
-          <fa-i
-            icon="fa-brands fa-github"
-            class="link"
-            style="font-size: 30px; margin-right: 30px"
-          ></fa-i>
-        </a>
+        <div class="project-actions">
+          <a
+            class="nav-link"
+            style="width: fit-content"
+            href="https://andreal021.github.io/VueFramework/"
+            target="_blank"
+          >
+            <fa-i
+              icon="fa-solid fa-arrow-up-right-from-square"
+              class="link"
+              style="font-size: 30px; margin-right: 30px"
+            ></fa-i>
+          </a>
+          <a
+            class="nav-link"
+            style="width: fit-content"
+            href="https://github.com/AndreaL021/VueFramework"
+            target="_blank"
+          >
+            <fa-i
+              icon="fa-brands fa-github"
+              class="link"
+              style="font-size: 30px; margin-right: 30px"
+            ></fa-i>
+          </a>
+        </div>
         <span class="link myFont" @click="framework.expand = !framework.expand"
-          >Vue Framework (work in progress)</span
+          >Vue Framework</span
         >
         <!-- <fa-i
           icon="fa-solid fa-chevron-down"
@@ -382,6 +501,9 @@
       ></div>
       <div class="col-12 mt-3" v-if="framework.expand"></div> -->
     </div>
+
+
+
     <!-- LaravelApp -->
     <div
       class="row d-flex justify-content-center align-items-center text-center mt-5"
@@ -390,18 +512,20 @@
       <div
         class="col-12 d-flex justify-content-center align-items-center text-center"
       >
-        <a
-          class="nav-link"
-          style="width: fit-content"
-          href="https://github.com/AndreaL021/Laravelecommerce"
-          target="_blank"
-        >
-          <fa-i
-            icon="fa-brands fa-github"
-            class="link"
-            style="font-size: 30px; margin-right: 30px"
-          ></fa-i>
-        </a>
+        <div class="project-actions">
+          <a
+            class="nav-link"
+            style="width: fit-content"
+            href="https://github.com/AndreaL021/Laravelecommerce"
+            target="_blank"
+          >
+            <fa-i
+              icon="fa-brands fa-github"
+              class="link"
+              style="font-size: 30px; margin-right: 30px"
+            ></fa-i>
+          </a>
+        </div>
         <span
           class="link myFont"
           @click="laravel_ecommerce.expand = !laravel_ecommerce.expand"
@@ -423,8 +547,9 @@
         ></fa-i>
       </div>
       <div
+        style="border-top: 2px solid #212529"
         v-if="laravel_ecommerce.expand"
-        class="col-12 col-md-6 d-flex justify-content-center align-items-center mt-2"
+        class="col-12 col-md-6 d-flex justify-content-center align-items-center mt-2 px-5"
       >
         <fa-i
           icon="fa-solid fa-chevron-left"
@@ -432,8 +557,7 @@
           @click="changeLaravelImage(-1)"
           style="font-size: 30px; margin-right: 5px"
         ></fa-i>
-        <img
-          style="cursor: pointer"
+        <img style="margin-top: 15px"
           width="100%"
           :src="laravel_ecommerce.images[laravel_image_index]"
         />
@@ -454,6 +578,7 @@
             icon="fa-brands fa-laravel"
             style="color: orangered; font-size: 30px"
           ></fa-i>
+          &nbsp &nbsp
           <fa-i
             icon="fa-brands fa-bootstrap"
             style="color: purple; font-size: 30px"
@@ -461,6 +586,9 @@
         </p>
       </div>
     </div>
+
+
+
     <!-- ElectronVueApp -->
     <div
       class="row d-flex justify-content-center align-items-center text-center mt-5"
@@ -469,30 +597,32 @@
       <div
         class="col-12 d-flex justify-content-center align-items-center text-center"
       >
-        <a
-          class="nav-link"
-          style="width: fit-content"
-          href="../assets/ElectronVueApp/electron_vue_test_app_setup.exe"
-          download="electron_vue_test_app_setup.exe"
-        >
-          <fa-i
-            icon="fa-solid fa-download"
-            class="link"
-            style="font-size: 30px; margin-right: 30px"
-          ></fa-i>
-        </a>
-        <a
-          class="nav-link"
-          style="width: fit-content"
-          href="https://github.com/AndreaL021/test_electron_vue"
-          target="_blank"
-        >
-          <fa-i
-            icon="fa-brands fa-github"
-            class="link"
-            style="font-size: 30px; margin-right: 30px"
-          ></fa-i>
-        </a>
+        <div class="project-actions">
+          <a
+            class="nav-link"
+            style="width: fit-content"
+            href="../assets/ElectronVueApp/electron_vue_test_app_setup.exe"
+            download="electron_vue_test_app_setup.exe"
+          >
+            <fa-i
+              icon="fa-solid fa-download"
+              class="link"
+              style="font-size: 30px; margin-right: 30px"
+            ></fa-i>
+          </a>
+          <a
+            class="nav-link"
+            style="width: fit-content"
+            href="https://github.com/AndreaL021/test_electron_vue"
+            target="_blank"
+          >
+            <fa-i
+              icon="fa-brands fa-github"
+              class="link"
+              style="font-size: 30px; margin-right: 30px"
+            ></fa-i>
+          </a>
+        </div>
         <span
           class="link myFont"
           @click="electron_vue.expand = !electron_vue.expand"
@@ -513,7 +643,8 @@
           style="font-size: 30px; margin-left: 10px"
         ></fa-i>
       </div>
-      <div class="col-12 col-md-6" v-if="electron_vue.expand">
+      <div class="col-12 col-md-6" v-if="electron_vue.expand"
+        style="border-top: 2px solid #212529">
         <video controls style="max-width: 100%" :src="electron_vue.src"></video>
       </div>
       <div class="col-12" v-if="electron_vue.expand">
@@ -540,6 +671,9 @@
         </p>
       </div>
     </div>
+
+
+
     <!-- Pokedex -->
     <div
       class="row d-flex justify-content-center align-items-center text-center mt-5"
@@ -548,13 +682,19 @@
       <div
         class="col-12 d-flex justify-content-center align-items-center text-center"
       >
-        <router-link style="width: fit-content" class="nav-link" to="/pokedex">
-          <fa-i
-            icon="fa-solid fa-arrow-up-right-from-square"
-            class="link"
-            style="font-size: 30px; margin-right: 30px"
-          ></fa-i>
-        </router-link>
+        <div class="project-actions">
+          <router-link
+            style="width: fit-content"
+            class="nav-link"
+            to="/pokedex"
+          >
+            <fa-i
+              icon="fa-solid fa-arrow-up-right-from-square"
+              class="link"
+              style="font-size: 30px; margin-right: 30px"
+            ></fa-i>
+          </router-link>
+        </div>
         <span class="link myFont" @click="pokedex.expand = !pokedex.expand"
           >Pokedex</span
         >
@@ -576,8 +716,9 @@
       <div
         class="col-12 col-md-6 d-flex justify-content-center align-items-center mt-2"
         v-if="pokedex.expand"
+        style="border-top: 2px solid #212529"
       >
-        <img style="cursor: pointer" width="100%" :src="pokedex.src" />
+        <img style="margin-top: 15px" width="100%" :src="pokedex.src" />
       </div>
       <div class="col-12 mt-3" v-if="pokedex.expand">
         <p
@@ -597,6 +738,9 @@
         </p>
       </div>
     </div>
+
+
+
     <!-- Snake -->
     <div
       class="row d-flex justify-content-center align-items-center text-center mt-5"
@@ -605,13 +749,15 @@
       <div
         class="col-12 d-flex justify-content-center align-items-center text-center"
       >
-        <router-link style="width: fit-content" class="nav-link" to="/snake">
-          <fa-i
-            icon="fa-solid fa-arrow-up-right-from-square"
-            class="link"
-            style="font-size: 30px; margin-right: 30px"
-          ></fa-i>
-        </router-link>
+        <div class="project-actions">
+          <router-link style="width: fit-content" class="nav-link" to="/snake">
+            <fa-i
+              icon="fa-solid fa-arrow-up-right-from-square"
+              class="link"
+              style="font-size: 30px; margin-right: 30px"
+            ></fa-i>
+          </router-link>
+        </div>
         <span class="link myFont" @click="snake.expand = !snake.expand"
           >Snake</span
         >
@@ -633,8 +779,9 @@
       <div
         class="col-12 col-md-6 d-flex justify-content-center align-items-center mt-2"
         v-if="snake.expand"
+        style="border-top: 2px solid #212529"
       >
-        <img style="cursor: pointer" width="100%" :src="snake.src" />
+        <img style="margin-top: 15px" width="100%" :src="snake.src" />
       </div>
       <div class="col-12 mt-3" v-if="snake.expand">
         <p
@@ -661,6 +808,9 @@
         </p>
       </div>
     </div>
+
+
+
     <!-- Flappy bird -->
     <div
       class="row d-flex justify-content-center align-items-center text-center mt-5"
@@ -669,30 +819,32 @@
       <div
         class="col-12 d-flex justify-content-center align-items-center text-center"
       >
-        <a
-          class="nav-link"
-          style="width: fit-content"
-          href="https://andreal021.github.io/FirstGame/"
-          target="_blank"
-        >
-          <fa-i
-            icon="fa-solid fa-arrow-up-right-from-square"
-            class="link"
-            style="font-size: 30px; margin-right: 30px"
-          ></fa-i>
-        </a>
-        <a
-          class="nav-link"
-          style="width: fit-content"
-          href="https://github.com/AndreaL021/FirstGame"
-          target="_blank"
-        >
-          <fa-i
-            icon="fa-brands fa-github"
-            class="link"
-            style="font-size: 30px; margin-right: 30px"
-          ></fa-i>
-        </a>
+        <div class="project-actions">
+          <a
+            class="nav-link"
+            style="width: fit-content"
+            href="https://andreal021.github.io/FirstGame/"
+            target="_blank"
+          >
+            <fa-i
+              icon="fa-solid fa-arrow-up-right-from-square"
+              class="link"
+              style="font-size: 30px; margin-right: 30px"
+            ></fa-i>
+          </a>
+          <a
+            class="nav-link"
+            style="width: fit-content"
+            href="https://github.com/AndreaL021/FirstGame"
+            target="_blank"
+          >
+            <fa-i
+              icon="fa-brands fa-github"
+              class="link"
+              style="font-size: 30px; margin-right: 30px"
+            ></fa-i>
+          </a>
+        </div>
         <span
           @click="flappy_bird.expand = !flappy_bird.expand"
           class="link myFont"
@@ -716,8 +868,9 @@
       <div
         class="col-12 col-md-6 d-flex justify-content-center align-items-center mt-2"
         v-if="flappy_bird.expand"
+        style="border-top: 2px solid #212529"
       >
-        <img width="100%" :src="flappy_bird.src" />
+        <img style="margin-top: 15px" width="100%" :src="flappy_bird.src" />
       </div>
       <div class="col-12 mt-3" v-if="flappy_bird.expand">
         <p
@@ -761,9 +914,16 @@ import web_app_users from "@/assets/SegnaPresenze/users.png";
 import search1 from "@/assets/SearchEngine/search1.png";
 import search2 from "@/assets/SearchEngine/search2.png";
 import search3 from "@/assets/SearchEngine/search3.png";
+import weather from "@/assets/WeatherApp/weatherApp.png";
+
+
 export default {
   data() {
     return {
+      weather: {
+        src: weather,
+        expand: false,
+      },
       snake: {
         src: snake_image,
         expand: false,
@@ -788,7 +948,7 @@ export default {
         images: [web_app_attendance, web_app_users],
         expand: false,
       },
-      search_engine:{
+      search_engine: {
         images: [search1, search2, search3],
         expand: false,
       },
@@ -809,7 +969,7 @@ export default {
       laravel_image_index: 0,
       laravel_new_image_index: 0,
       ionic_web_app_image_index: 0,
-      search_engine_image_index:0,
+      search_engine_image_index: 0,
       framework: {
         src: null,
         expand: false,
@@ -859,22 +1019,119 @@ export default {
   mounted() {},
 };
 </script>
-  <style scoped>
+<style scoped>
 .home {
   background-color: rgb(33, 37, 41);
   min-height: 100vh;
 }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+  align-items: start;
+  gap: 24px;
+  padding: 0 24px 48px;
+}
+
+.projects-grid > h1 {
+  grid-column: 1 / -1;
+  margin-bottom: 8px;
+}
+
+.projects-grid > .row {
+  min-width: 0;
+  margin: 0 !important;
+  border-radius: 12px;
+}
+
+.projects-grid > .row > [class*="col-"] {
+  width: 100%;
+  min-width: 0;
+}
+
+.projects-grid > .row > :first-child {
+  display: grid !important;
+  grid-template-columns: 30px minmax(0, 1fr) 30px;
+  gap: 12px;
+  align-items: center;
+}
+
+.project-actions {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.project-actions .nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.project-actions .link,
+.project-actions span {
+  margin: 0 !important;
+}
+
+.project-actions .link {
+  font-size: 30px !important;
+}
+
+.projects-grid > .row > :first-child > .myFont {
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;
+  font-size: clamp(20px, 2vw, 29px);
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
+.projects-grid > .row > :first-child > svg {
+  grid-column: 3;
+  grid-row: 2;
+  justify-self: end;
+  margin: 0 !important;
+}
+
+.projects-grid img,
+.projects-grid video {
+  max-width: 100%;
+}
+
+.projects-grid img {
+  max-height: min(500px, 60vh);
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 767px) {
+  .projects-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+}
+
 .link {
   font-size: 33px;
   color: white;
 }
+
 .link:hover {
   color: gold;
   filter: drop-shadow(10px 10px 10px gold);
   cursor: pointer;
 }
+
 .myFont {
   font-family: "Jersey 10", sans-serif;
 }
 </style>
-  
