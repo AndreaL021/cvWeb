@@ -68,7 +68,7 @@ const skillGroups = [
       { name: 'TypeScript', icon: typescript },
       { name: 'Vue.js', icon: vue },
       { name: 'React.js', icon: react },
-      { name: 'Three.js', icon: threejs, light: true },
+      // { name: 'Three.js', icon: threejs, light: true },
     ],
   },
   {
